@@ -1,0 +1,45 @@
+#header{
+	background-color: #F0F0F0;
+	padding: 10px 0px;
+	margin: 0px;
+	min-height: 70px;	
+}	
+
+.headerCenter {
+    font-size: 72pt;
+    padding: 0px;
+    margin: 0 auto;
+    width: 1100px;
+    height: 130px;
+}
+
+body{
+	background-color: #ADD8E6;
+	height:100%;
+}	
+	
+#conteudo{
+	padding: 10px;
+	border: 1px solid white;
+	border-radius: 15px;
+	background-color: #FFFFFF;
+}	
+	
+#mainFooter {
+	position:absolute;
+    width:100%;
+	margin-top: 25px;
+	padding: 12px;
+	background-color: #222222;
+	color: #DDDDDD;
+	text-align: center;
+	line-height: 1.0;
+}
+
+hr{
+  border-color:#aaa;
+  box-sizing:border-box;
+  width:100%;  
+}
+
+
