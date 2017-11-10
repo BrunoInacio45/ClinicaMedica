@@ -1,51 +1,31 @@
 <?php $paginaAtiva = "agendamento"; ?>
 
-<?php
-
-
-require "php/conexaoMysql.php";
-
-function filtraEntrada($dado) 
-{
-  $dado = trim($dado);               
-  $dado = stripslashes($dado);       
-  $dado = htmlspecialchars($dado);   
-  
-  return $dado;
-}
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") 
-{
-	$msgErro = "";
-	
-  // Define e inicializa as variáveis
-  $login = $senha = "";
-  
-  $login             = filtraEntrada($_POST["login"]);     
-  $senha            = filtraEntrada($_POST["senha"]);
-  
-  try
-	{    
-    // Função definida no arquivo conexaoMysql.php
-    $conn = conectaAoMySQL();
-
-    $sql = "
-      INSERT INTO dados (Id, Login, Senha)
-      VALUES (null, '$login', '$senha');
-    ";
-    
-    if (! $conn->query($sql))
-      throw new Exception("Falha na inserção dos dados: " . $conn->error);
-    
-    $formProcSucesso = true;
-  }
-	catch (Exception $e)
-	{
-		$msgErro = $e->getMessage();
+ <?php
+ 
+ function filtraEntrada($dado){
+		$dado = trim($dado);
+		$dado = stripslashes($dado);
+		$dado = htmlspecialchars($dado);
+		return $dado;
+	}	
+ 
+ if($_SERVER["REQUEST_METHOD"] == 'POST'){
+		$msgErro = '';
+		$login = $senha = "";
+		
+		
+		
+		$login = filtraEntrada($_POST["login"]);
+		$senha = filtraEntrada($_POST["senha"]);
+		
+		
+		if(($login == 'adm') && ($senha == 'senhaadm')){
+				echo "Bem-Vindo <br>";
+			}else
+				echo "Essas informações <font color='red'>NÃO PODEM</font> ser acessadas por você";
 	}
-}
-  
-?>
+	?>
+ 
 
 <!DOCTYPE html>
 <html>

@@ -19,6 +19,8 @@
         <script src="Bootstrap/js/bootstrap.min.js"></script>
 		<link rel="stylesheet" href="css/layout.css" type="text/css">
 		<script src="js/cadastro.js"></script>
+		<script src="js/buscaEndereco.js"></script>
+		
 		<script>
 			function validaDate(){
 				var date = document.forms['formCadastro']['data'].value;
@@ -31,6 +33,24 @@
 				return true;
 			}
 			
+			function especialidade(){
+				alert("TESTE");
+				var cargo = document.getElementById("cargo");
+				if(cargo.value == "medico"){
+					$("#espec").show();
+				}
+			} 
+			
+		
+ 
+            function MostrarEspec(){
+				var cargo = document.getElementById("cargo");
+				if(cargo.value == "medico"){
+					$("#Espec").show();
+				}else
+					$("#Espec").hide();
+                
+            }
 			
 		</script>
         
@@ -83,7 +103,7 @@
             <div class="form-group">
                 <label class="control-label col-sm-2" for="cargo">Cargo:</label>
                 <div class="col-sm-5"> 
-                    <select id="cargo" name="cargo" class="form-control" onchange="especialidade()">
+                    <select id="cargo" name="cargo" class="form-control" onchange="MostrarEspec()">
                         <option value="medico">Medico(a)</option>
                         <option value="enfermeiro" selected>Enfermeiro(a)</option>
                         <option value="secretário">Secretário(a)</option>
@@ -92,7 +112,7 @@
                 </div>
             </div>
 			
-			<div id="espec" class="form-group">
+			<div id="Espec" style="display:none" class="form-group">
                 <label class="control-label col-sm-2" for="especialidade">Especialidade médica:</label>
                 <div class="col-sm-5"> 
                     <input type="text" id="especialidade" name="especialidade" class="form-control">
@@ -131,7 +151,7 @@
 			<div class="form-group">
                 <label class="control-label col-sm-2" for="cep">CEP:</label>
                 <div class="col-sm-5">
-                    <input type="text" class="form-control" name="cep" placeholder="Digite o CEP">
+                    <input type="text" class="form-control" name="cep" onkeyup="buscaEndereco(this.value)">
                 </div>
 			</div>
     
@@ -147,16 +167,16 @@
             </div>
 
             <div class="form-group">
-                <label class="control-label col-sm-2" for="logradouro">Logradouro:</label>
+                <label class="control-label col-sm-2" for="rua">Logradouro:</label>
                 <div class="col-sm-5">
-                    <input type="text" class="form-control" name="logradouro" placeholder="Digite o logradouro">
+                    <input type="text" class="form-control" name="rua" placeholder="Digite o logradouro">
                 </div>
             </div>
                             
             <div class="form-group">
                 <label class="control-label col-sm-2" for="numero">Número:</label>
 				<div class="col-sm-2">
-                    <input type="number" class="form-control" name="numero" placeholder="Digite o número">
+                    <input type="text" class="form-control" name="numero" placeholder="Digite o número">
                 </div>
             </div>
             
@@ -193,8 +213,9 @@
 					<button type="submit" class="btn btn-default">Cadastrar</button>
 				</div>	
 			</div>
-			
 		</form>	
+		
+		<div id="Mensagem" style="display:none">Mensagem de teste!</div>
 		
 	<?php 
 		if ($_SERVER["REQUEST_METHOD"] == "POST") {  
@@ -204,7 +225,7 @@
 			echo "<h3 class='text-danger'>Cadastro não realizado: $msgErro</h3>";
 		}
 	?>	
-		
+	
     </div>
 <?php include "php/footer.php"; ?>
 </body>

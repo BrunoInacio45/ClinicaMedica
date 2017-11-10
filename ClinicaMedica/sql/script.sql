@@ -33,3 +33,25 @@ create table clinicamedica.contato(
     Motivo varchar(25),
     Mensagem varchar(200)
 )
+
+create table clinicamedica.paciente(
+	Codigo integer auto_increment primary key,
+    Nome varchar(30),
+    Telefone varchar(20)
+)
+
+create table clinicamedica.agenda(
+	CodAgendamento integer auto_increment primary key,
+    DataAgendamento date UNIQUE,
+    hora integer UNIQUE,
+    codFuncionario integer(5),
+    codPaciente integer,
+    foreign key (codFuncionario) references clinicamedica.funcionario (Id) on delete cascade on update cascade,
+	foreign key (codPaciente) references clinicamedica.paciente (Codigo) on delete cascade on update cascade
+	
+)
+
+create table clinicamedica.usuario(
+	Login varchar(20) primary key,
+    Senha varchar(30)
+)

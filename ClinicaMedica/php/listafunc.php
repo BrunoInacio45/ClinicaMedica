@@ -1,6 +1,6 @@
 <?php 
+	include("conexaoMysql.php");
 	
-	require "conexaoMysql.php";
 	
 	class Funcionario{
 		public $nome;
@@ -11,19 +11,24 @@
 		public $cidade;
 	}
 
+	class Medico{
+		public $id;
+		public $especialidade;
+		public $nome;
+	}	
 	function getFuncionario($conn){
 		
 		$listaFuncionario = '';
 		$listaFuncionario = array();
 		$sqlf = "
-			SELECT F.Nome, F.Sexo, F.Cargo, F.RG, E.Logradouro, E.Cidade from clinicamedica.funcionario F, clinicamedica.enderecofunc E where E.Id = F.Id
+			SELECT F.Nome, F.Sexo, F.Cargo, F.RG, E.Logradouro, E.Cidade from clinicamedica.funcionario F, clinicamedica.enderecofunc E where E.Id = F.Id;
 		";
 		
 		$stmt = $conn->prepare($sqlf);
 		$stmt->execute();
 		$stmt->bind_result($nome, $sexo, $cargo, $rg, $logradouro, $cidade);
 		
-		while(($stmt->fetch()) ){
+		while($stmt->fetch()) {
 			$funcionario = new Funcionario();
 			
 			$funcionario->nome = $nome;
@@ -34,20 +39,38 @@
 			$funcionario->cidade = $cidade;
 			$listaFuncionario[] = $funcionario;
 		}
-		
-		
-		
-		
-		
 		return $listaFuncionario;
-	}	
+	};	
 	
-	$listaFuncionario = "";
+	function getMedico($conn){
+		$listaMedico = "";
+		$listaMedico = array();
+		$sql = "
+			SELECT Id,Nome,Especialidade FROM clinicamedica.funcionario where Cargo = 'medico';
+		";
+		
+		$stmt = $conn->prepare($sql);
+		$stmt->execute();
+		$stmt->bind_result($id,$nome,$especialidade);
+		
+		while($stmt->fetch()){
+			$medico = new Medico();
+			
+			$medico->id = $id;
+			$medico->nome = $nome;
+			$medico->especialidade = $especialidade;
+			
+			$listaMedico[] = $medico;
+		}
+		return $listaMedico;
+	};
+	
+	
 	$msgErro = "";
 
 	try{
-		$conn = conectaAoMySQL();
 		$listaFuncionario = getFuncionario($conn);  
+		$listaMedico = getMedico($conn);
 	}catch (Exception $e){
 		$msgErro = $e->getMessage();
 	}

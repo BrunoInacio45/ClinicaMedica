@@ -1,8 +1,7 @@
 <?php
-
-require "conexaoMysql.php";
+	include("conexaoMysql.php");
 		
-	function filtraEntrada($dado){
+	function filtraEntradaC($dado){
 		$dado = trim($dado);
 		$dado = stripslashes($dado);
 		$dado = htmlspecialchars($dado);
@@ -14,14 +13,13 @@ require "conexaoMysql.php";
 		$nome = $email = $motivo = $mensagem = "";
 		
 		
-		$nome = filtraEntrada($_POST["nome"]);
-		$email = filtraEntrada($_POST["email"]);
-		$motivo = filtraEntrada($_POST["motivo"]);
-		$mensagem = filtraEntrada($_POST["mensagem"]);
+		$nome = filtraEntradaC($_POST["nome"]);
+		$email = filtraEntradaC($_POST["email"]);
+		$motivo = filtraEntradaC($_POST["motivo"]);
+		$mensagem = filtraEntradaC($_POST["mensagem"]);
 		
 		try{
 			
-			$conn = conectaAoMySQL();
 			
 			$sql = "
 				INSERT INTO clinicamedica.contato(Id, Nome, Email, Motivo, Mensagem)

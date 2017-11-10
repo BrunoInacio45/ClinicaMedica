@@ -1,6 +1,8 @@
 <?php 
 	$paginaAtiva = "agendamento"; 
-	//require "php/cadastrocont.php";
+	include("php/listafunc.php");
+	include("php/cadastroagendamento.php");
+	
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +17,9 @@
         <script src="js/jquery-3.2.1.js"></script>
         <!-- Latest compiled JavaScript -->
         <script src="Bootstrap/js/bootstrap.min.js"></script>
+		<script src="js/especialidadeMedica.js"></script>
 		<link rel="stylesheet" href="css/layout.css" type="text/css">
+		
 		
 </head>
 <body>
@@ -25,18 +29,27 @@
     <div class="container" id='conteudo'>
 	<h3>Faça o agendamento de sua consulta</h3>
 	<hr/>
-    <form action='teste.php' method='POST'>
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" >
 		<div class="form-group">
             <label for="especialidade">Especialidade médica desejada:</label>
-			<select id='especialidade' name="especialidade" class="form-control" required>
-                <option value="#">#</option>
+			<select id='especialidade' name="especialidade" class="form-control" onchange="buscaNome(this.value)" required>
+               <?php
+				if($listaMedico != ""){
+					foreach ($listaMedico as $medico){       
+						echo "
+							<option value='$medico->especialidade'>$medico->especialidade</option>
+						";
+					}
+				}	
+				?>
+			
             </select>
 		</div>
 		
 		<div class="form-group">
             <label for="nomeEsp">Nome do médico especialista</label>
 			<select id='nomeEsp' name="nomeEsp" class="form-control" required>
-                <option value="#">#</option>
+                
             </select>
 		</div>
 		
@@ -54,7 +67,7 @@
 		
 		<div class="form-group">
             <label for="nomePasc">Nome do paciente</label>
-			<input type='text' class="form-control" name='nomePasc' required>
+			<input type='text' class="form-control" name='nomePasc' id='nomePasc' required>
 		</div>
 		
 		<div class="form-group">
@@ -63,8 +76,17 @@
 		</div>
 		
 		<div class="form-group">
-            <button type='button' class='btn btn-primary btn-block' style="font-size:18px">Agendar</button>
+            <button type='submit' class='btn btn-primary btn-block' style="font-size:18px">Agendar</button>
 		</div>
+	
+	<?php 
+		if ($_SERVER["REQUEST_METHOD"] == "POST") {  
+			if ($msgErro == "")
+				echo "<h3 class='text-success'>Agendamento realizado com sucesso!</h3>";
+		else
+			echo "<h3 class='text-danger'>Agendamento não realizado: $msgErro</h3>";
+		}
+	?>
 	
 	</div>
 

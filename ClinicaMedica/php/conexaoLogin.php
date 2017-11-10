@@ -5,21 +5,21 @@ define("USER", "2464328_clinicamedica");
 define("PASSWORD", "Clinica2017"); 
 define("DATABASE", "2464328_clinicamedica");*/
 
-/*define("HOST", "localhost"); 
+define("HOST", "localhost"); 
 define("USER", "root");
 define("PASSWORD", ""); 
-define("DATABASE", "clinicamedica");*/
-
-$HOST = "localhost";
-$USER = "root";
-$PASSWORD = "";
-$DATABASE = "clinicamedica";
+define("DATABASE", "clinicamedica");
 
 
-
-  $conn = new mysqli($HOST, $USER, $PASSWORD, $DATABASE);
+function conectaLogin()
+{
+  $conn = new mysqli(HOST, USER, PASSWORD, DATABASE);
   if ($conn->connect_error)
     throw new Exception('Falha na conexão com o MySQL: ' . $conn->connect_error);
 
+  return $conn;   
+}
+
+	
 
 ?>

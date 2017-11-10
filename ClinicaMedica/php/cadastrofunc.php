@@ -1,6 +1,6 @@
 <?php
-
-require "conexaoMysql.php";
+	include("conexaoMysql.php");
+	
 		
 	function filtraEntrada($dado){
 		$dado = trim($dado);
@@ -35,7 +35,6 @@ require "conexaoMysql.php";
 		
 		try{
 			
-			$conn = conectaAoMySQL();
 			$conn->begin_transaction();
 			
 			$sql = "
