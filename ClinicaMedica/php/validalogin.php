@@ -1,5 +1,4 @@
 <?php
-	session_start();
 	include("conexaoMysql.php");
 
 	function filtraEntradaV($dado){
@@ -10,6 +9,8 @@
 	};	
 	
 	if($_SERVER["REQUEST_METHOD"] == 'POST'){
+		$login = $senha = "";
+		
 		$login = filtraEntradaV($_POST["login"]);
 		$senha = filtraEntradaV($_POST["senha"]);
 		
@@ -18,10 +19,14 @@
 		$resultado = $conn->query($sql);
 		
 		if($resultado->num_rows <= 0){
-			echo "<script>alert('Dados incorretos')</script>";}
-		else
-			$_SESSION["login"] = $login;
+			echo "<script>alert('Dados incorretos')</script>";
 			
+		}
+		else{
+			session_start();
+			$_SESSION["login"] = $login;
+			$_SESSION["senha"] = $senha;
+		}	
 	}
 	
 		

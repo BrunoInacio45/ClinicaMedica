@@ -1,6 +1,9 @@
 <?php 
+	
 	$paginaAtiva = "contato"; 
 	require "php/cadastrocont.php";
+	
+	
 ?>
 
 <!DOCTYPE html>

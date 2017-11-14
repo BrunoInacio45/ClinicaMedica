@@ -18,8 +18,6 @@
         <!-- Latest compiled JavaScript -->
         <script src="Bootstrap/js/bootstrap.min.js"></script>
 		<link rel="stylesheet" href="css/layout.css" type="text/css">
-		<script src="js/cadastro.js"></script>
-		<script src="js/buscaEndereco.js"></script>
 		
 		<script>
 			function validaDate(){
@@ -33,17 +31,7 @@
 				return true;
 			}
 			
-			function especialidade(){
-				alert("TESTE");
-				var cargo = document.getElementById("cargo");
-				if(cargo.value == "medico"){
-					$("#espec").show();
-				}
-			} 
-			
-		
- 
-            function MostrarEspec(){
+			function MostrarEspec(){
 				var cargo = document.getElementById("cargo");
 				if(cargo.value == "medico"){
 					$("#Espec").show();
@@ -51,6 +39,35 @@
 					$("#Espec").hide();
                 
             }
+			
+			function buscaEndereco(cep)
+  {
+    $.ajax({
+
+      url: 'php/buscaEndereco.php',
+      type: 'POST',
+      async: true,
+      dataType: 'json',
+      data: {'cep':cep},         
+
+      success: function(result) {
+      
+        
+        if (result != "")
+        {                  
+          document.forms[0]["rua"].value    = result.logradouro;
+          document.forms[0]["numero"].value = result.numero;
+          document.forms[0]["bairro"].value = result.bairro;
+        }
+      },
+
+      error: function(xhr, status, error) {
+        alert(status + error + xhr.responseText);
+      }
+
+    });  
+
+  }
 			
 		</script>
         
@@ -151,7 +168,7 @@
 			<div class="form-group">
                 <label class="control-label col-sm-2" for="cep">CEP:</label>
                 <div class="col-sm-5">
-                    <input type="text" class="form-control" name="cep" onkeyup="buscaEndereco(this.value)">
+                    <input type="text" class="form-control" placeholder="Informe o CEP" name="cep" onkeyup="buscaEndereco(this.value)">
                 </div>
 			</div>
     
@@ -167,9 +184,9 @@
             </div>
 
             <div class="form-group">
-                <label class="control-label col-sm-2" for="rua">Logradouro:</label>
+                <label class="control-label col-sm-2" for="rua">Endereço:</label>
                 <div class="col-sm-5">
-                    <input type="text" class="form-control" name="rua" placeholder="Digite o logradouro">
+                    <input type="text" class="form-control" name="rua" placeholder="Digite o endereco">
                 </div>
             </div>
                             
@@ -214,8 +231,8 @@
 				</div>	
 			</div>
 		</form>	
+		</form>	
 		
-		<div id="Mensagem" style="display:none">Mensagem de teste!</div>
 		
 	<?php 
 		if ($_SERVER["REQUEST_METHOD"] == "POST") {  

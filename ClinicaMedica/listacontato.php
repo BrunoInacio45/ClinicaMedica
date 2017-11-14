@@ -21,7 +21,7 @@
 </head>
 <body>
 <?php include "php/header.php"; ?>
-<?php include "php/navbar.php"; ?>
+<?php include "php/navbarRestrito.php"; ?>
 
     <div class="container" id='conteudo'>
 		<h3 style='text-align:center'>Contatos realizados</h3>

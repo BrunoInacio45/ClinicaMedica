@@ -14,7 +14,7 @@
 	class Medico{
 		public $id;
 		public $especialidade;
-		public $nome;
+		
 	}	
 	function getFuncionario($conn){
 		
@@ -46,18 +46,16 @@
 		$listaMedico = "";
 		$listaMedico = array();
 		$sql = "
-			SELECT Id,Nome,Especialidade FROM clinicamedica.funcionario where Cargo = 'medico';
+			SELECT DISTINCT Especialidade FROM clinicamedica.funcionario where Cargo = 'medico';
 		";
 		
 		$stmt = $conn->prepare($sql);
 		$stmt->execute();
-		$stmt->bind_result($id,$nome,$especialidade);
+		$stmt->bind_result($especialidade);
 		
 		while($stmt->fetch()){
 			$medico = new Medico();
 			
-			$medico->id = $id;
-			$medico->nome = $nome;
 			$medico->especialidade = $especialidade;
 			
 			$listaMedico[] = $medico;

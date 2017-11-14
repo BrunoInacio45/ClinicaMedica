@@ -26,7 +26,7 @@
 		$outro = filtraEntrada($_POST["outro"]);
 		$cep = filtraEntrada($_POST["cep"]);
 		$tip_log = filtraEntrada($_POST["tip_log"]);
-		$logradouro = filtraEntrada($_POST["logradouro"]);
+		$logradouro = filtraEntrada($_POST["rua"]);
 		$numero = filtraEntrada($_POST["numero"]);
 		$complemento = filtraEntrada($_POST["bairro"]);
 		$bairro = filtraEntrada($_POST["bairro"]);

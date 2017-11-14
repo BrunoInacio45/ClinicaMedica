@@ -9,6 +9,7 @@ try
 {
   require "conexaoMysql.php";
   
+  $medico = "";
   $especialidade = "";
   if (isset($_POST["especialidade"]))
     $especialidade = $_POST["especialidade"];
@@ -27,7 +28,7 @@ try
     $row = $result->fetch_assoc();
     
     $medico = new Medico();
-    
+  
     $medico->nome = $row["Nome"];
     
   } 

@@ -51,6 +51,8 @@ $paginaAtiva = "galeria";
 		img.style.border = "none";
 	}
 		</script>
+		
+		
 </head>
 <body>
 <?php include "php/header.php"; ?>
@@ -59,21 +61,27 @@ $paginaAtiva = "galeria";
     <div class="container" id='conteudo'>
 	<h2>Galeria</h2>
     
-	
+	<div>
 	<table class="center" border="0" style="horizontal-align:center;">
 	<tr>
-		<td><img onMouseEnter='bordaIn(this)' onMouseLeave='bordaOut(this)' class="imgGalery" src="images/1.jpg" id="img01"></td>
-		<td><img onMouseEnter='bordaIn(this)' onMouseLeave='bordaOut(this)' class="imgGalery" src="images/2.jpg" id="img02"></td>
-		<td><img onMouseEnter='bordaIn(this)' onMouseLeave='bordaOut(this)' class="imgGalery" src="images/3.jpg" id="img03"></td>
+		<td><img onMouseEnter='bordaIn(this)' onMouseLeave='bordaOut(this)' class="imgGalery" src="images/11.jpg" id="img01"></td>
+		<td><img onMouseEnter='bordaIn(this)' onMouseLeave='bordaOut(this)' class="imgGalery" src="images/2.jpeg" id="img02"></td>
+		<td><img onMouseEnter='bordaIn(this)' onMouseLeave='bordaOut(this)' class="imgGalery" src="images/33.jpg" id="img03"></td>
 		</tr>
 	<tr>
-		<td><img onMouseEnter='bordaIn(this)' onMouseLeave='bordaOut(this)' class="imgGalery" src="images/4.jpg" id="img05"></td>
-		<td><img onMouseEnter='bordaIn(this)' onMouseLeave='bordaOut(this)' class="imgGalery" src="images/5.jpg" id="img06"></td>
-		<td><img onMouseEnter='bordaIn(this)' onMouseLeave='bordaOut(this)' class="imgGalery" src="images/6.jpg" id="img07"></td>
+		<td><img onMouseEnter='bordaIn(this)' onMouseLeave='bordaOut(this)' class="imgGalery" src="images/44.jpg" id="img05"></td>
+		<td><img onMouseEnter='bordaIn(this)' onMouseLeave='bordaOut(this)' class="imgGalery" src="images/55.jpg" id="img06"></td>
+		<td><img onMouseEnter='bordaIn(this)' onMouseLeave='bordaOut(this)' class="imgGalery" src="images/66.jpg" id="img07"></td>
 		</tr>
 	<tr>
 </table>
-
+	</div>
+	
+	<div>
+		<h3>Veja nossa clínica</h3>
+		<br>
+		<div align="center"><iframe width="800px" height="500px" src="http://www.youtube.com/embed/CsWePsrDAMY?autoplay=0"></iframe></div>
+	</div>
     
 	</div>
 	

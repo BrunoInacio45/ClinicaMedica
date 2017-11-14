@@ -1,5 +1,5 @@
 <?php
-	
+	include("validaLogin.php");
 ?>
  
  
@@ -78,6 +78,4 @@
 </nav>
   
   
-
-
 

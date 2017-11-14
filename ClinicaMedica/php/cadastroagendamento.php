@@ -15,32 +15,33 @@
 		$codFuncionario = $codPaciente = $data = $hora = "";
 		
 		
-		$nome = filtraEntradaA($_POST["nome"]);
+		$nome = filtraEntradaA($_POST["nomePasc"]);
 		$telefone = filtraEntradaA($_POST["telefone"]);
-		$codFuncionario = filtraEntradaA($_POST["codFuncionario"]);
-		$codPaciente = filtraEntradaA($_POST["codPaciente"]);
+		$codFuncionario = 39;
 		$data = filtraEntradaA($_POST["data"]);
-		$hora = filtraEntradaA($_POST["hora"]);
+		$hora = filtraEntradaA($_POST["horario"]);;
 		
 		try{
 			
 			$conn->begin_transaction();
 			$sql = "
-				INSERT INTO clinicamedica.paciente(Id, Nome, Telefone)
+				INSERT INTO clinicamedica.paciente(Codigo, Nome, Telefone)
 				values (null, ? , ?);
 			";
 			
 			$stmt = $conn->prepare($sql);
 
-			$stmt->bind_param("ss", $nome , $Telefone);
+			$stmt->bind_param("ss", $nome , $telefone);
         
 			if (! $stmt->execute())
 				throw new Exception("Erro ao agendar o paciente: " . $conn->error);
 			
+			
 			$sql = "
-				INSERT INTO clinicamedica.agenda(codAgendamento, data, hora, codFuncionario, codPaciente)
+				INSERT INTO clinicamedica.agenda(codAgendamento, DataAgendamento, hora, codFuncionario, codPaciente)
 				values (null, ? , ?, ?, LAST_INSERT_ID());
 			";
+			
 			
 			$stmt = $conn->prepare($sql);
 
@@ -49,6 +50,7 @@
 			if (! $stmt->execute())
 				throw new Exception("Erro ao agendar o paciente: " . $conn->error);
     
+			$conn->commit();
 			
 			$formProcSucesso = true;
 			} catch (Exception $e){

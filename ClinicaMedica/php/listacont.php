@@ -1,6 +1,6 @@
 <?php 
 	
-	require "conexaoMysql.php";
+	include("conexaoMysql.php");
 	
 	class Contato{
 		public $nome;
@@ -37,7 +37,6 @@
 	$msgErro = "";
 
 	try{
-		$conn = conectaAoMySQL();
 		$listaContato = getContato($conn);  
 	}catch (Exception $e){
 		$msgErro = $e->getMessage();

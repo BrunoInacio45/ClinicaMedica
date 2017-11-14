@@ -61,7 +61,10 @@
 		<div class="form-group">
             <label for="hoario">Horário disponível para consulta</label>
 			<select id='horario' name="horario" class="form-control" required>
-                <option value="#">#</option>
+                <option value='8'>8</option>
+				<option value='9'>9</option>
+				<option value='10'>10</option>
+				<option value='11'>11</option>
             </select>
 		</div>
 		
@@ -87,6 +90,7 @@
 			echo "<h3 class='text-danger'>Agendamento não realizado: $msgErro</h3>";
 		}
 	?>
+	
 	
 	</div>
 
