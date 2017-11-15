@@ -15,12 +15,13 @@ $.ajax({
 
     if (result != "")
     {                  
-        var campoSelect = document.getElementById("nomeEsp");
-        var option = document.createElement("option");
-        option.text = result.nome;
-        option.value = result.id;
-        campoSelect.add(option);
-
+		for(var i in result){	
+			var campoSelect = document.getElementById("nomeEsp");
+			var option = document.createElement("option");
+			option.text = result[i].nome;
+			option.value = result[i].nome;
+			campoSelect.add(option);
+		}
     }
   },
 
@@ -42,18 +43,20 @@ $.ajax({
       type: 'POST',
       async: true,
       dataType: 'json',
-      data: {'data':data},         
+      data: {'dataConsulta':dataConsulta},         
 
       success: function(result) {
       
         
         if (result != "")
         {                  
+			for(var i in result){	
 			var campoSelect = document.getElementById("horario");
 			var option = document.createElement("option");
-			option.text = result.horario;
-			option.value = result.horario;
+			option.text = result[i].horario;
+			option.value = result[i].horario;
 			campoSelect.add(option);
+		}
 			
         }
       },

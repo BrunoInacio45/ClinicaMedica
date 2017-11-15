@@ -1,22 +1,47 @@
 <?php
 	include("validaLogin.php");
+	if(!isset($_SESSION["login"])){
+		$logado = false;
+	}else
+		$logado = true;
 ?>
  
- 
+	
  
  <nav class="navbar navbar-inverse">
     <div class="container-fluid">
-      
       <ul class="nav navbar-nav" >
-        <li <?php if ($paginaAtiva == 'home') echo "class='active' "; ?>><a href="index.php">Home</a></li>
+		<?php if($logado == false){ ?>
+		<li <?php if ($paginaAtiva == 'home') echo "class='active' "; ?>><a href="index.php">Home</a></li>
         <li <?php if ($paginaAtiva == 'galeria') echo "class='active' "; ?>><a href="galeria.php">Galeria</a></li>    
         <li <?php if ($paginaAtiva == 'contato') echo "class='active' "; ?>><a href="contato.php">Contato</a></li>    
 		<li <?php if ($paginaAtiva == 'agendamento') echo "class='active' "; ?>><a href="agendamento.php">Agendamento</a></li> 
-		<li <?php if ($paginaAtiva == 'listafuncionario') echo "class='active' "; ?>><a href="listafuncionario.php">Listagem de funcionário</a></li> 
-      </ul>
+		<?php
+		}?>
+		
+		<?php if($logado == true){ ?>
+		<li <?php if ($paginaAtiva == 'home') echo "class='active' "; ?>><a href="index.php">Home</a></li>
+        <li <?php if ($paginaAtiva == 'galeria') echo "class='active' "; ?>><a href="galeria.php">Galeria</a></li>    
+        <li <?php if ($paginaAtiva == 'contato') echo "class='active' "; ?>><a href="contato.php">Contato</a></li>    
+		<li <?php if ($paginaAtiva == 'agendamento') echo "class='active' "; ?>><a href="agendamento.php">Agendamento</a></li> 
+		<li <?php if ($paginaAtiva == 'cadastro') echo "class='active' "; ?>><a href="cadastro.php">Cadastro</a></li>
+        <li <?php if ($paginaAtiva == 'listafuncionario') echo "class='active' "; ?>><a href="listafuncionario.php">Lista Funcionário</a></li>    
+        <li <?php if ($paginaAtiva == 'listacontato') echo "class='active' "; ?>><a href="listacontato.php">Contatos realizados</a></li>    
+		<li <?php if ($paginaAtiva == 'listaagendamento') echo "class='active' "; ?>><a href="listaagendamento.php">teste</a></li> 
+		<?php 
+		}		
+		?>
+	  </ul>
       <ul class="nav navbar-nav navbar-right">
-		<li><a href="#myModal" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-log-in" ></span> Login</a></li>
-		<li><a href="#"><span class="glyphicon glyphicon-log-out" ></span> Sair</a></li>
+		<?php 
+			if($logado == false) 
+				echo"<li><a href='#myModal' data-toggle='modal' data-target='#myModal'><span class='glyphicon glyphicon-log-in' ></span> Login</a></li>";
+			else
+				echo"<li><a href='php/logout.php'><span class='glyphicon glyphicon-log-out' ></span> Sair</a></li>";
+		?>	
+		
+		
+		
       </ul>
     </div>
 	

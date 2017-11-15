@@ -42,12 +42,12 @@ create table clinicamedica.paciente(
 
 create table clinicamedica.agenda(
 	CodAgendamento integer auto_increment primary key,
-    DataAgendamento date UNIQUE,
-    hora integer UNIQUE,
-    codFuncionario integer(5),
+    DataAgendamento date,
+    hora integer,
+    codFuncionario integer,
     codPaciente integer,
-    foreign key (codFuncionario) references clinicamedica.funcionario (Id) on delete cascade on update cascade,
-	foreign key (codPaciente) references clinicamedica.paciente (Codigo) on delete cascade on update cascade
+    foreign key (codFuncionario) references clinicamedica.funcionario (Id),
+	foreign key (codPaciente) references clinicamedica.paciente (Codigo) 
 	
 )
 

@@ -3,7 +3,7 @@
 class Endereco 
 {
   public $logradouro;
-  public $numero;
+  public $cidade;
   public $bairro;
 }
 
@@ -17,7 +17,7 @@ try
     $cep = $_POST["cep"];
   
   $SQL = "
-    SELECT Logradouro, Numero, Bairro
+    SELECT Logradouro, Cidade, Bairro
     FROM clinicamedica.enderecofunc
     WHERE CEP = '$cep';
   ";
@@ -32,7 +32,7 @@ try
     $endereco = new Endereco();
     
     $endereco->logradouro = $row["Logradouro"];
-    $endereco->numero = $row["Numero"];
+    $endereco->cidade = $row["Cidade"];
     $endereco->bairro = $row["Bairro"];
 
   } 

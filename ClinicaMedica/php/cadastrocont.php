@@ -35,8 +35,15 @@
     
 			
 			$formProcSucesso = true;
+			echo "<script>
+					alert('Contato realizado');
+					window.location.replace('../contato.php');
+				</script>"; 
 			} catch (Exception $e){
-				$msgErro = $e->getMessage();
+			echo"<script>
+					alert('Contato não realizado, tente novamente');
+					window.location.replace('../contato.php');
+				</script>"; 
 			}
 	}
 	?>

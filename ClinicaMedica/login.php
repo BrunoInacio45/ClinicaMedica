@@ -1,30 +1,7 @@
-<?php $paginaAtiva = "agendamento"; ?>
-
- <?php
+<?php
  
- function filtraEntrada($dado){
-		$dado = trim($dado);
-		$dado = stripslashes($dado);
-		$dado = htmlspecialchars($dado);
-		return $dado;
-	}	
- 
- if($_SERVER["REQUEST_METHOD"] == 'POST'){
-		$msgErro = '';
-		$login = $senha = "";
-		
-		
-		
-		$login = filtraEntrada($_POST["login"]);
-		$senha = filtraEntrada($_POST["senha"]);
-		
-		
-		if(($login == 'adm') && ($senha == 'senhaadm')){
-				echo "Bem-Vindo <br>";
-			}else
-				echo "Essas informações <font color='red'>NÃO PODEM</font> ser acessadas por você";
-	}
-	?>
+ $paginaAtiva = "login"; 
+?>
  
 
 <!DOCTYPE html>
@@ -50,7 +27,7 @@
         
         <h3 style="text-align:center">Faça o login com sua conta</h3>
 		<br>
-        <form class="form-horizontal" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
+        <form class="form-horizontal" action="php/validaLogin.php" method="POST">
             <div class="form-group">
               <label class="control-label col-sm-2" for="login">Login:</label>
               <div class="col-sm-4">
@@ -74,15 +51,7 @@
 		</form>	
 
 		
-<?php 
-  if ($_SERVER["REQUEST_METHOD"] == "POST") 
-  {  
-    if ($msgErro == "")
-      echo "<h3 class='text-success'>Dados armazenados com sucesso!</h3>";
-    else
-      echo "<h3 class='text-danger'>Cadastro não realizado: $msgErro</h3>";
-  }
-?>
+
     </div>
 	
 <?php include "php/footer.php"; ?>

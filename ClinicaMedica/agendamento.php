@@ -1,4 +1,5 @@
 <?php 
+	session_start();
 	$paginaAtiva = "agendamento"; 
 	include("php/listafunc.php");
 	include("php/cadastroagendamento.php");
@@ -48,23 +49,20 @@
 		
 		<div class="form-group">
             <label for="nomeEsp">Nome do médico especialista</label>
-			<select id='nomeEsp' name="nomeEsp" class="form-control" required>
-                
+			<select id='nomeEsp' name="nomeEsp" class="form-control" onchange="buscaHorario(this.value)" required>
+                <option value='#'>Escolha a especialidade médica</option>
             </select>
 		</div>
 		
 		<div class="form-group">
             <label for="data">Data da consulta</label>
-			<input type='date' class="form-control" name='data' required>
+			<input type='date' class="form-control" name='dataConsulta' required>
 		</div>
 		
 		<div class="form-group">
-            <label for="hoario">Horário disponível para consulta</label>
+            <label for="horario">Horário disponível para consulta</label>
 			<select id='horario' name="horario" class="form-control" required>
-                <option value='8'>8</option>
-				<option value='9'>9</option>
-				<option value='10'>10</option>
-				<option value='11'>11</option>
+                
             </select>
 		</div>
 		

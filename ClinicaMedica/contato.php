@@ -1,5 +1,5 @@
 <?php 
-	
+	session_start();
 	$paginaAtiva = "contato"; 
 	require "php/cadastrocont.php";
 	
@@ -38,10 +38,10 @@
     <div class="container" id='conteudo'>
     <h3>Envie sua mensagem</h3>
 	<hr/>
-    <form name='formContato' onSubmit="return validaForm()" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" >
+    <form name='formContato' onSubmit="return validaForm()" action="php/cadastrocont.php" method="POST" >
         <div class="form-group">
             <label for="nome">Nome:</label>
-            <input type="text" class="form-control" id="nome" name="nome" required>
+            <input type="text" class="form-control" id="nome" name="nome" required>	
         </div>
 
         <div class="form-group">

@@ -1,5 +1,5 @@
 <?php 
-
+	include('php/validasession.php');
 	$paginaAtiva = "cadastro"; 
 	require "php/cadastrofunc.php";
 	
@@ -55,9 +55,9 @@
         
         if (result != "")
         {                  
-          document.forms[0]["rua"].value    = result.logradouro;
-          document.forms[0]["numero"].value = result.numero;
-          document.forms[0]["bairro"].value = result.bairro;
+          document.forms[1]["rua"].value    = result.logradouro;
+          document.forms[1]["cidade"].value = result.cidade;
+          document.forms[1]["bairro"].value = result.bairro;
         }
       },
 

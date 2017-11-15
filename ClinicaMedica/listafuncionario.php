@@ -1,4 +1,5 @@
-<?php 
+<?php  
+	include('php/validasession.php');
 	$paginaAtiva = "listafuncionario"; 
 	require "php/listafunc.php";
 ?>
@@ -21,7 +22,7 @@
 </head>
 <body>
 <?php include "php/header.php"; ?>
-<?php include "php/navbarRestrito.php"; ?>
+<?php include "php/navbar.php"; ?>
 
     <div class="container" id='conteudo'>
 		<h3 style='text-align:center'>Funcionários cadastrados</h3>

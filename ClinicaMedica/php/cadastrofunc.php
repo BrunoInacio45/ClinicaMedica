@@ -66,9 +66,15 @@
 			$conn->commit();
     
 			$formProcSucesso = true;
+			echo "<script>
+					alert('Cadastro realizado');
+					window.location.replace('cadastro.php');
+				</script>"; 
 			} catch (Exception $e){
-				$conn->rollback();
-				$msgErro = $e->getMessage();
+				$conn->rollback();echo"<script>
+					alert('Cadastro não realizado, tente novamente');
+					window.location.replace('cadastro.php');
+				</script>"; 
 			}
 	}
 	?>

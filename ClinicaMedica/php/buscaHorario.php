@@ -5,38 +5,41 @@ class Hora
   public $horario;
 }
 
+
+
+
 try
 {
   require "conexaoMysql.php";
+  $listahorario = "";
+  $listahorario = array();
   
-  $hora = "";
-  $data = "";
-  $nomeEsp = "";
-  if (isset($_POST["data"]) ){
-    $data = $_POST["data"];	
+  if (isset($_POST["dataConsulta"])){
+    $data = $_POST["dataConsulta"];
+	echo "<script>alert($data)</script>";
   }
   
   $SQL = "
     SELECT hora
     FROM agenda
-    WHERE CodAgendamento >= 1;
+    WHERE DataAgendamento = '$data';
   ";
   
-  if (! $result = $conn->query($SQL))
-    throw new Exception('Ocorreu uma falha ao buscar os horários: ' . $conn->error);
-    
-  if ($result->num_rows > 0)
-  {
-    $row = $result->fetch_assoc();
-    
-    $hora = new Hora();
   
-    $hora->horario = $row["hora"];
-    
-  } 
-  
-  $jsonStr = json_encode($hora);
-  echo $jsonStr;
+	$stmt = $conn->prepare($SQL);
+	$stmt->execute();
+	$stmt->bind_result($hora);
+		
+	while($stmt->fetch()){
+		$horario = new Hora();
+		
+		$horario->horario = $hora;
+		
+		$listahorario[] = $horario;
+	}
+	
+	$jsonStr = json_encode($listahorario);
+	echo $jsonStr;
   
 }
 catch (Exception $e)

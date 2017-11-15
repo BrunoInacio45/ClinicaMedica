@@ -3,38 +3,38 @@
 class Medico 
 {
   public $nome;
+  
 }
 
 try
 {
-  require "conexaoMysql.php";
-  
-  $medico = "";
-  $especialidade = "";
-  if (isset($_POST["especialidade"]))
+	require "conexaoMysql.php";
+	$listaMedico = "";
+	$listaMedico = array();
+	
+	if (isset($_POST["especialidade"]))
     $especialidade = $_POST["especialidade"];
-  
-  $SQL = "
-    SELECT Nome
-    FROM funcionario
-    WHERE Especialidade = '$especialidade';
-  ";
-  
-  if (! $result = $conn->query($SQL))
-    throw new Exception('Ocorreu uma falha ao buscar os nomes: ' . $conn->error);
-    
-  if ($result->num_rows > 0)
-  {
-    $row = $result->fetch_assoc();
-    
-    $medico = new Medico();
-  
-    $medico->nome = $row["Nome"];
-    
-  } 
-  
-  $jsonStr = json_encode($medico);
-  echo $jsonStr;
+	
+	$sql = "
+		SELECT Nome
+		FROM funcionario
+		WHERE Especialidade = '$especialidade';
+	";
+	
+	$stmt = $conn->prepare($sql);
+	$stmt->execute();
+	$stmt->bind_result($nome);
+		
+	while($stmt->fetch()){
+		$medico = new Medico();
+		
+		$medico->nome = $nome;
+		
+		$listaMedico[] = $medico;
+	}
+	
+	$jsonStr = json_encode($listaMedico);
+	echo $jsonStr;
   
 }
 catch (Exception $e)

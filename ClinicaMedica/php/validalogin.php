@@ -19,13 +19,16 @@
 		$resultado = $conn->query($sql);
 		
 		if($resultado->num_rows <= 0){
-			echo "<script>alert('Dados incorretos')</script>";
-			
+			echo "<script>
+					alert('Dados incorretos, tente novamente!');
+					window.location.replace('login.php');
+				</script>"; 
 		}
 		else{
 			session_start();
 			$_SESSION["login"] = $login;
-			$_SESSION["senha"] = $senha;
+			$_SESSION["logado"] = true;
+			header('Location:index.php');
 		}	
 	}
 	
