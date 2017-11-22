@@ -11,18 +11,17 @@
 	if($_SERVER["REQUEST_METHOD"] == 'POST'){
 		$msgErro = '';
 		$nome = $email = $motivo = $mensagem = "";
-		
-		
+				
 		$nome = filtraEntradaC($_POST["nome"]);
 		$email = filtraEntradaC($_POST["email"]);
 		$motivo = filtraEntradaC($_POST["motivo"]);
 		$mensagem = filtraEntradaC($_POST["mensagem"]);
-		
+		if(($nome != '') || ($email != '') || ($motivo != '') || ($mensagem != '')){
 		try{
 			
 			
 			$sql = "
-				INSERT INTO clinicamedica.contato(Id, Nome, Email, Motivo, Mensagem)
+				INSERT INTO contato(Id, Nome, Email, Motivo, Mensagem)
 				values (null, ? , ? , ? , ?);
 			";
 			
@@ -45,5 +44,6 @@
 					window.location.replace('../contato.php');
 				</script>"; 
 			}
-	}
+                }
+                }
 	?>

@@ -53,12 +53,12 @@
 	}	
 		
 		
-		
+	if(	($medico->id != '') || ($nome != '') || ($telefone != '') || ($data != '') || ($hora != '')){
 		try{
 			
 			$conn->begin_transaction();
 			$sql = "
-				INSERT INTO clinicamedica.paciente(Codigo, Nome, Telefone)
+				INSERT INTO paciente(Codigo, Nome, Telefone)
 				values (null, ? , ?);
 			";
 			
@@ -71,7 +71,7 @@
 			
 			
 			$sql = "
-				INSERT INTO clinicamedica.agenda(codAgendamento, DataAgendamento, hora, codFuncionario, codPaciente)
+				INSERT INTO agenda(codAgendamento, DataAgendamento, hora, codFuncionario, codPaciente)
 				values (null, ? , ?, ?, LAST_INSERT_ID());
 			";
 			
@@ -94,5 +94,6 @@
 			} catch (Exception $e){
 				$msgErro = $e->getMessage();
 			}
+		}
 	}
 	?>

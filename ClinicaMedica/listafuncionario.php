@@ -9,7 +9,7 @@
 <html>
 <head lang="pt-br">
         <meta charset="UTF-8">
-        <title>Agendamento</title>
+        <title>Lista Funcionários</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="Bootstrap/css/bootstrap.min.css">
@@ -25,7 +25,7 @@
 <?php include "php/navbar.php"; ?>
 
     <div class="container" id='conteudo'>
-		<h3 style='text-align:center'>Funcionários cadastrados</h3>
+		<h3 style='text-align:center'>Agendamentos cadastrados</h3>
 		<table class="table table-striped">
 			<thread>
 				<tr>
@@ -41,10 +41,15 @@
 			<?php
 				if($listaFuncionario != ""){
 					foreach ($listaFuncionario as $funcionario){       
-						echo "
+						$sexo = '';
+                                                if($funcionario->sexo == 1)
+                                                        $sexo = 'Masculino';
+                                                if($funcionario->sexo == 2)
+                                                        $sexo = 'Feminino';
+                                                echo "
 							<tr>
 								<td>$funcionario->nome</td>
-								<td>$funcionario->sexo</td>
+								<td>$sexo</td>
 								<td>$funcionario->cargo</td>
 								<td>$funcionario->rg</td>
 								<td>$funcionario->logradouro</td>

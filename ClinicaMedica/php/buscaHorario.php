@@ -5,24 +5,23 @@ class Hora
   public $horario;
 }
 
-
-
-
 try
 {
   require "conexaoMysql.php";
   $listahorario = "";
   $listahorario = array();
   
-  if (isset($_POST["dataConsulta"])){
-    $data = $_POST["dataConsulta"];
-	echo "<script>alert($data)</script>";
+  if (isset($_POST["data"])){
+    $data = $_POST["data"];
+    $nomeEsp = $_POST["nomeEsp"];
   }
   
   $SQL = "
-    SELECT hora
-    FROM agenda
-    WHERE DataAgendamento = '$data';
+    SELECT A.hora 
+	FROM funcionario F 
+		INNER JOIN agenda A 
+		ON F.id = A.codFuncionario 
+	WHERE F.Nome = '$nomeEsp' and A.DataAgendamento = '$data'
   ";
   
   
@@ -31,11 +30,11 @@ try
 	$stmt->bind_result($hora);
 		
 	while($stmt->fetch()){
-		$horario = new Hora();
+		$horarioInd = new Hora();
 		
-		$horario->horario = $hora;
+		$horarioInd->horario = $hora;
 		
-		$listahorario[] = $horario;
+		$listahorario[] = $horarioInd;
 	}
 	
 	$jsonStr = json_encode($listahorario);

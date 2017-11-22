@@ -1,6 +1,6 @@
 <?php
-	include("validaLogin.php");
-	if(!isset($_SESSION["login"])){
+        include("validalogin.php");
+        if(!isset($_SESSION["login"])){
 		$logado = false;
 	}else
 		$logado = true;
@@ -27,7 +27,7 @@
 		<li <?php if ($paginaAtiva == 'cadastro') echo "class='active' "; ?>><a href="cadastro.php">Cadastro</a></li>
         <li <?php if ($paginaAtiva == 'listafuncionario') echo "class='active' "; ?>><a href="listafuncionario.php">Lista Funcionário</a></li>    
         <li <?php if ($paginaAtiva == 'listacontato') echo "class='active' "; ?>><a href="listacontato.php">Contatos realizados</a></li>    
-		<li <?php if ($paginaAtiva == 'listaagendamento') echo "class='active' "; ?>><a href="listaagendamento.php">teste</a></li> 
+		<li <?php if ($paginaAtiva == 'listaagendamento') echo "class='active' "; ?>><a href="listaagendamento.php">Agendamentos</a></li> 
 		<?php 
 		}		
 		?>
@@ -36,8 +36,10 @@
 		<?php 
 			if($logado == false) 
 				echo"<li><a href='#myModal' data-toggle='modal' data-target='#myModal'><span class='glyphicon glyphicon-log-in' ></span> Login</a></li>";
-			else
-				echo"<li><a href='php/logout.php'><span class='glyphicon glyphicon-log-out' ></span> Sair</a></li>";
+			else{
+                                echo"<li><a href='#'><span class='glyphicon glyphicon-user' ></span> Admin</a></li>";
+                                echo"<li><a href='php/logout.php'><span class='glyphicon glyphicon-log-out' ></span> Sair</a></li>";
+                        }        
 		?>	
 		
 		

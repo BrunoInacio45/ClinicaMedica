@@ -18,7 +18,7 @@ try
   
   $SQL = "
     SELECT Logradouro, Cidade, Bairro
-    FROM clinicamedica.enderecofunc
+    FROM EnderecoFunc
     WHERE CEP = '$cep';
   ";
   

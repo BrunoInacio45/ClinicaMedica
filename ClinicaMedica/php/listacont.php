@@ -13,7 +13,7 @@
 		$listaContato = '';
 		$listaContato = array();
 		$sqlf = "
-			SELECT Nome, Email, Motivo, Mensagem FROM clinicamedica.contato
+			SELECT Nome, Email, Motivo, Mensagem FROM contato
 		";
 		
 		$stmt = $conn->prepare($sqlf);

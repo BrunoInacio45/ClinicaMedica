@@ -9,26 +9,28 @@
 	};	
 	
 	if($_SERVER["REQUEST_METHOD"] == 'POST'){
-		$login = $senha = "";
+		$login = $senha = $aux = "";
 		
 		$login = filtraEntradaV($_POST["login"]);
-		$senha = filtraEntradaV($_POST["senha"]);
+		$aux = filtraEntradaV($_POST["senha"]);
+		$senha = md5($aux);
 		
-		
-		$sql = "SELECT Login FROM clinicamedica.usuario where Login = '$login' and Senha = '$senha' ";
+		$sql = "SELECT Login FROM usuario where Login = '$login' and Senha = '$senha' ";
 		$resultado = $conn->query($sql);
 		
 		if($resultado->num_rows <= 0){
 			echo "<script>
 					alert('Dados incorretos, tente novamente!');
-					window.location.replace('login.php');
+					window.location.replace('index.php');
 				</script>"; 
 		}
 		else{
 			session_start();
 			$_SESSION["login"] = $login;
-			$_SESSION["logado"] = true;
-			header('Location:index.php');
+			echo "<script>
+                                        alert('Bem vindo!');
+					window.location.replace('index.php');
+				</script>"; 
 		}	
 	}
 	

@@ -1,19 +1,11 @@
 <?php
 
-/*define("HOST", ""); 
-define("USER", "2464328_clinicamedica");
-define("PASSWORD", "Clinica2017"); 
-define("DATABASE", "2464328_clinicamedica");*/
 
-/*define("HOST", "localhost"); 
-define("USER", "root");
-define("PASSWORD", ""); 
-define("DATABASE", "clinicamedica");*/
 
-$HOST = "localhost";
-$USER = "root";
-$PASSWORD = "";
-$DATABASE = "clinicamedica";
+$HOST = "fdb17.awardspace.net";
+$USER = "2464328_clinicamedica";
+$PASSWORD = "bckclinica12345";
+$DATABASE = "2464328_clinicamedica";
 
 
 

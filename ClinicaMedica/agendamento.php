@@ -20,6 +20,36 @@
         <script src="Bootstrap/js/bootstrap.min.js"></script>
 		<script src="js/especialidadeMedica.js"></script>
 		<link rel="stylesheet" href="css/layout.css" type="text/css">
+                
+        <script>
+			function pegaValores() {
+				var a = document.getElementById("nomeEsp").value;
+				var b = document.getElementById("data").value;
+				buscaHorario(b,a);
+			}
+                        
+                        function apagaData() {
+                                $("#data").val('');
+				$("#horario").empty();
+                                var campoSelect = document.getElementById("horario");
+                                var option = document.createElement("option");
+                                option.text = "Escolha o(a) médico(a) e a data da consulta" ;
+                                option.value = '#';
+                                campoSelect.add(option);
+			}
+                        
+                        function validaDate(){
+				var espec = document.getElementById("especialidade").value;
+				var medico = document.getElementById("nomeEsp").value;
+				var horario = document.getElementById("horario").value;
+				if((espec == '#') || (medico == '#') || (horario == '#')){
+					alert("Dados incorretos, tente novamente!");
+					return false;
+				}
+				return true;
+			}
+ 
+		</script>       
 		
 		
 </head>
@@ -30,11 +60,12 @@
     <div class="container" id='conteudo'>
 	<h3>Faça o agendamento de sua consulta</h3>
 	<hr/>
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" >
+    <form onSubmit="return validaDate()" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" >
 		<div class="form-group">
             <label for="especialidade">Especialidade médica desejada:</label>
 			<select id='especialidade' name="especialidade" class="form-control" onchange="buscaNome(this.value)" required>
-               <?php
+               <option value='#'>-</option>
+			   <?php
 				if($listaMedico != ""){
 					foreach ($listaMedico as $medico){       
 						echo "
@@ -49,21 +80,21 @@
 		
 		<div class="form-group">
             <label for="nomeEsp">Nome do médico especialista</label>
-			<select id='nomeEsp' name="nomeEsp" class="form-control" onchange="buscaHorario(this.value)" required>
+			<select id='nomeEsp' name="nomeEsp" class="form-control"  onchange="apagaData()" required>
                 <option value='#'>Escolha a especialidade médica</option>
             </select>
 		</div>
 		
 		<div class="form-group">
             <label for="data">Data da consulta</label>
-			<input type='date' class="form-control" name='dataConsulta' required>
+			<input type='date' class="form-control" id='data' name='data' onkeyup='pegaValores()' required>
 		</div>
 		
 		<div class="form-group">
-            <label for="horario">Horário disponível para consulta</label>
-			<select id='horario' name="horario" class="form-control" required>
-                
-            </select>
+            <label for="horario">Horários disponíveis para consulta</label>
+		<select id='horario' name="horario" class="form-control" required>
+                    <option value='#'>Escolha o(a) médico(a) e a data da consulta</option>    
+                </select>
 		</div>
 		
 		<div class="form-group">
@@ -79,15 +110,6 @@
 		<div class="form-group">
             <button type='submit' class='btn btn-primary btn-block' style="font-size:18px">Agendar</button>
 		</div>
-	
-	<?php 
-		if ($_SERVER["REQUEST_METHOD"] == "POST") {  
-			if ($msgErro == "")
-				echo "<h3 class='text-success'>Agendamento realizado com sucesso!</h3>";
-		else
-			echo "<h3 class='text-danger'>Agendamento não realizado: $msgErro</h3>";
-		}
-	?>
 	
 	
 	</div>

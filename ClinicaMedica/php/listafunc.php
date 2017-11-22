@@ -21,7 +21,7 @@
 		$listaFuncionario = '';
 		$listaFuncionario = array();
 		$sqlf = "
-			SELECT F.Nome, F.Sexo, F.Cargo, F.RG, E.Logradouro, E.Cidade from clinicamedica.funcionario F, clinicamedica.enderecofunc E where E.Id = F.Id;
+			SELECT F.Nome, F.Sexo, F.Cargo, F.RG, E.Logradouro, E.Cidade from funcionario F, EnderecoFunc E where E.Id = F.Id;
 		";
 		
 		$stmt = $conn->prepare($sqlf);
@@ -46,7 +46,7 @@
 		$listaMedico = "";
 		$listaMedico = array();
 		$sql = "
-			SELECT DISTINCT Especialidade FROM clinicamedica.funcionario where Cargo = 'medico';
+			SELECT DISTINCT Especialidade FROM funcionario where Cargo = 'medico';
 		";
 		
 		$stmt = $conn->prepare($sql);

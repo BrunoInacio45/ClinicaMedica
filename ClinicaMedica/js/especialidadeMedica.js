@@ -18,7 +18,7 @@ $.ajax({
 		for(var i in result){	
 			var campoSelect = document.getElementById("nomeEsp");
 			var option = document.createElement("option");
-			option.text = result[i].nome;
+			option.text = result[i].nome ;
 			option.value = result[i].nome;
 			campoSelect.add(option);
 		}
@@ -33,31 +33,64 @@ $.ajax({
 
 }
   
-  function buscaHorario(data)
+  function buscaHorario(data,nomeEsp)
   {
-	$("#horario").empty();  
-	  
+	
+   var dados =  {
+      'data':data,
+      'nomeEsp':nomeEsp
+   };    
+     
+	 
     $.ajax({
 
       url: 'php/buscaHorario.php',
       type: 'POST',
       async: true,
       dataType: 'json',
-      data: {'dataConsulta':dataConsulta},         
+      data: dados,         
 
       success: function(result) {
       
         
         if (result != "")
         {                  
-			for(var i in result){	
-			var campoSelect = document.getElementById("horario");
-			var option = document.createElement("option");
-			option.text = result[i].horario;
-			option.value = result[i].horario;
-			campoSelect.add(option);
-		}
+			$("#horario").empty(); 
+			var cont = 0;
+			var horario = 8;
+                        var horarioS;
+			var indisponivel = false;
+                        var hr = [];
+
+			while(horario<18){
+                             indisponivel = false;
+                             for(var i in result){
+                                 if(horario == result[i].horario)
+                                     indisponivel = true;
+                             }
+                             
+                             if(!indisponivel){
+                                  var campoSelect = document.getElementById("horario");
+                                  var option =document.createElement("option");
+                                  option.text = horario + ":00";
+                                  option.value = horario;         
+                                  campoSelect.add(option);
+                             }
+                             
+                             horario++;
+                        }
+                                    		
 			
+        }
+        else{
+                $("#horario").empty();  
+                for(var a=8;a<18;a++){
+                        var campoSelect = document.getElementById("horario");
+                        var option =document.createElement("option");
+                        option.text = a + ":00";
+                        option.value = a;         
+                        campoSelect.add(option);
+                }
         }
       },
 

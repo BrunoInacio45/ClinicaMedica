@@ -15,38 +15,54 @@ $paginaAtiva = "home";
 	<script src="js/index.js"></script>
     <script src="Bootstrap/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="css/layout.css" type="text/css">
-	<script>
+	<style>
 				
-		
-		
-	</script>
+	.aligncenter {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        padding: 3px;
+		border: 1px solid #ADD8E6;
+		border-radius: 10px;
+       }	
+	</style>
   
 </head>
 
 <body>
 <?php include "php/header.php"; ?>
 <?php include "php/navbar.php"; ?>
+<div>
+	<img src="http://clinicadeolhosvisar.com.br/wp-content/uploads/clinica-visar-araxa-recepcao-2.jpg" class="aligncenter" alt=""/>
+</div>	
 
 <div class="container" id="conteudo">
 
-
 <div >
-	<div id='desc'>
-        <h2>Descrição</h2>
-        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth. Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar. The Big Oxmox advised her not to do so, because there were thousands of bad Commas, wild Question Marks and devious Semikoli, but the Little Blind Text didn’t listen. She packed her seven versalia, put her initial into the belt and made herself on the way. When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then</p>
+
+    <div id='desc'>
+		<h2>Descrição</h2>
+		<p>Nossa clínica oferece aos nossos clientes, diversos tipos de especialidades médicas, com os melhores profissionais do mercado</p>
     </div>
     <div id="missao">
         <h2>Missão</h2>
-        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth. Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to</p>
+        <p>Preservar a saúde e a qualidade de vida das pessoas, a partir de um atendimento profissional, ético, humano e personalizado.</p>
     </div>
     <div id="valores">
         <h2>Valores <a href="#" id="linkMostraConteudo"></a></h2>
         <div id='mostraConteudo' style='display:none;'>
 			<ul>
-				<li>Valor 1 da clinica médica</li>
-				<li>Valor 2 da clinica médica</li>
-				<li>Valor 3 da clinica médica</li>
-				<li>Valor 4 da clinica médica</li>
+				<li>Compromisso com o cliente.</li>
+				<li>Ética nos negócios</li>
+				<li>Educação e formação de pessoas.</li>
+				<li>Disposição e energia positiva.</li>
+                                
+                                <li>Responsabilidade social.</li>
+                                <li>Respeito e valorização do ser humano.</li>
+                                <li>Responsabilidade pelos resultados.</li>
+                                <li>Transparência.</li>
+                                <li>Qualidade de produtos e serviços.</li>
 			</ul>
 		</div>
     </div>

@@ -6,11 +6,11 @@
 }	
 
 .headerCenter {
-    font-size: 72pt;
-    padding: 0px;
-    margin: 0 auto;
-    width: 1100px;
-    height: 130px;
+        font-size: 72pt;
+        padding: 0px;
+        margin: 0 auto;
+        width: 1100px;
+        height: 130px;
 }
 
 body{
@@ -27,7 +27,7 @@ body{
 	
 #mainFooter {
 	position:absolute;
-    width:100%;
+        width:100%;
 	margin-top: 25px;
 	padding: 12px;
 	background-color: #222222;
@@ -37,9 +37,9 @@ body{
 }
 
 hr{
-  border-color:#aaa;
-  box-sizing:border-box;
-  width:100%;  
+        border-color:#aaa;
+        box-sizing:border-box;
+        width:100%;  
 }
 
 

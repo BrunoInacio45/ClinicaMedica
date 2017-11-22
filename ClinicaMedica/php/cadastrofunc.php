@@ -38,7 +38,7 @@
 			$conn->begin_transaction();
 			
 			$sql = "
-				INSERT INTO clinicamedica.funcionario(Id, Nome, DataNasc, Sexo, EstadoCivil, Cargo, Especialidade, CPF, RG, Outro)
+				INSERT INTO funcionario(Id, Nome, DataNasc, Sexo, EstadoCivil, Cargo, Especialidade, CPF, RG, Outro)
 				values (null, ? , ? , ? , ? , ? , ? , ? , ? , ?);
 			";
 			
@@ -51,7 +51,7 @@
     
 						
 			$sql = "
-				INSERT INTO clinicamedica.enderecofunc(CodEndereco, CEP, TipoLogradouro, Logradouro, Numero, Complemento, Bairro, Cidade, Estado, Id)
+				INSERT INTO EnderecoFunc(CodEndereco, CEP, TipoLogradouro, Logradouro, Numero, Complemento, Bairro, Cidade, Estado, Id)
 				values (null, ?, ?, ?, ?, ?, ?, ?, ?,  LAST_INSERT_ID());
 			";
 			
