@@ -34,7 +34,7 @@ $paginaAtiva = "home";
 <?php include "php/header.php"; ?>
 <?php include "php/navbar.php"; ?>
 <div>
-	<img src="http://clinicadeolhosvisar.com.br/wp-content/uploads/clinica-visar-araxa-recepcao-2.jpg" class="aligncenter" alt=""/>
+	<img src="http://clinicadeolhosvisar.com.br/wp-content/uploads/clinica-visar-araxa-recepcao-2.jpg" class="aligncenter img-responsive" alt=""/>
 </div>	
 
 <div class="container" id="conteudo">

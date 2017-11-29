@@ -17,6 +17,13 @@ $paginaAtiva = "galeria";
         <script src="js/galeria.js"></script>
         <link rel="stylesheet" href="css/layout.css" type="text/css">
         <link rel="stylesheet" href="css/galeria.css?v=15" type="text/css">
+		<style>
+		.video{
+			width: 100%;
+			height: 500px;
+		}	
+		</style>
+		
 		<script>
 		$(document).ready(function() {
 			
@@ -64,14 +71,14 @@ $paginaAtiva = "galeria";
 	<div>
 	<table class="center" border="0" style="horizontal-align:center;">
 	<tr>
-		<td><img onMouseEnter='bordaIn(this)' onMouseLeave='bordaOut(this)' class="imgGalery" src="images/11.jpg" id="img01"></td>
-		<td><img onMouseEnter='bordaIn(this)' onMouseLeave='bordaOut(this)' class="imgGalery" src="images/2.jpeg" id="img02"></td>
-		<td><img onMouseEnter='bordaIn(this)' onMouseLeave='bordaOut(this)' class="imgGalery" src="images/33.jpg" id="img03"></td>
+		<div class="col-md-12"><td><img onMouseEnter='bordaIn(this)' onMouseLeave='bordaOut(this)' class="imgGalery img-responsive" src="images/11.jpg" id="img01"></td></div>
+		<div class="col-md-12"><td><img onMouseEnter='bordaIn(this)' onMouseLeave='bordaOut(this)' class="imgGalery img-responsive" src="images/2.jpeg" id="img02"></td></div>
+		<div class="col-md-12"><td><img onMouseEnter='bordaIn(this)' onMouseLeave='bordaOut(this)' class="imgGalery img-responsive" src="images/33.jpg" id="img03"></td></div>
 		</tr>
 	<tr>
-		<td><img onMouseEnter='bordaIn(this)' onMouseLeave='bordaOut(this)' class="imgGalery" src="images/44.jpg" id="img05"></td>
-		<td><img onMouseEnter='bordaIn(this)' onMouseLeave='bordaOut(this)' class="imgGalery" src="images/55.jpg" id="img06"></td>
-		<td><img onMouseEnter='bordaIn(this)' onMouseLeave='bordaOut(this)' class="imgGalery" src="images/66.jpg" id="img07"></td>
+		<div class="col-md-12"><td><img onMouseEnter='bordaIn(this)' onMouseLeave='bordaOut(this)' class="imgGalery img-responsive" src="images/44.jpg" id="img05"></td></div>
+		<div class="col-md-12"><td><img onMouseEnter='bordaIn(this)' onMouseLeave='bordaOut(this)' class="imgGalery img-responsive" src="images/55.jpg" id="img06"></td></div>
+		<div class="col-md-12"><td><img onMouseEnter='bordaIn(this)' onMouseLeave='bordaOut(this)' class="imgGalery img-responsive" src="images/66.jpg" id="img07"></td></div>
 		</tr>
 	<tr>
 </table>
@@ -80,7 +87,7 @@ $paginaAtiva = "galeria";
 	<div>
 		<h3>Veja nossa clínica</h3>
 		<br>
-		<div align="center"><iframe width="800px" height="500px" src="http://www.youtube.com/embed/CsWePsrDAMY?autoplay=0"></iframe></div>
+		<div align="center"><iframe  class='video' src="http://www.youtube.com/embed/CsWePsrDAMY?autoplay=0"></iframe></div>
 	</div>
     
 	</div>

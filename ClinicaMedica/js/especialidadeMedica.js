@@ -1,7 +1,7 @@
 function buscaNome(especialidade)
 {
  $("#nomeEsp").empty();  
-
+ 
 $.ajax({
 
   url: 'php/buscaNomes.php',
@@ -14,7 +14,8 @@ $.ajax({
 
 
     if (result != "")
-    {                  
+    {           
+                    
 		for(var i in result){	
 			var campoSelect = document.getElementById("nomeEsp");
 			var option = document.createElement("option");

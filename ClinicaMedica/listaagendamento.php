@@ -26,7 +26,8 @@
 
     <div class="container" id='conteudo'>
 		<h3 style='text-align:center'>Agendamentos cadastrados</h3>
-		<table class="table table-striped">
+		<div style="overflow-x:auto;">
+                <table class="table table-bordered table-striped table-hover">
 			<thread>
 				<tr>
 					<th>Paciente</th>
@@ -58,7 +59,7 @@
 			?>
 				
 		</table>
-		
+		</div>
 		<?php
 			if ($msgErro != "")
 			echo "<p class='text-danger'>A operação não pode ser realizada: $msgErro</p>";

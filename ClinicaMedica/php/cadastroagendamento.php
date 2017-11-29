@@ -86,12 +86,16 @@
 			$conn->commit();
 			
 			echo "<script>
-					alert('Agendamento realizado');
+					alert('Agendamento realizado com sucesso, em breve entraremos em contato confirmando sua consulta!');
 					window.location.replace('agendamento.php');
 				</script>"; 
 			
 			$formProcSucesso = true;
 			} catch (Exception $e){
+                        echo "<script>
+					alert('Agendamento não foi realizado com sucesso, tente novamente!');
+					window.location.replace('agendamento.php');
+				</script>";
 				$msgErro = $e->getMessage();
 			}
 		}

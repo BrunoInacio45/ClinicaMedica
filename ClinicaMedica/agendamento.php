@@ -67,7 +67,7 @@
                <option value='#'>-</option>
 			   <?php
 				if($listaMedico != ""){
-					foreach ($listaMedico as $medico){       
+                                        foreach ($listaMedico as $medico){       
 						echo "
 							<option value='$medico->especialidade'>$medico->especialidade</option>
 						";

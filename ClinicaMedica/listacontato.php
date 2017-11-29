@@ -27,7 +27,7 @@
     <div class="container" id='conteudo'>
 		<h3 style='text-align:center'>Contatos realizados</h3>
 		<div style="overflow-x:auto;">
-		<table class="table table-bordered table-hover">
+		<table class="table table-bordered table-striped table-hover">
 			<thread>
 				<tr>
 					<th>Nome</th>
