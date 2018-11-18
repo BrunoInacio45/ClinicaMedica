@@ -3,9 +3,9 @@
 
 
 $HOST = "fdb17.awardspace.net";
-$USER = "2464328_clinicamedica";
-$PASSWORD = "bckclinica12345";
-$DATABASE = "2464328_clinicamedica";
+$USER = "";
+$PASSWORD = "";
+$DATABASE = "";
 
 
 
